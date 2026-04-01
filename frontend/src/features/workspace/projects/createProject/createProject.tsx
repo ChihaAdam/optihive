@@ -10,7 +10,7 @@ function CreateProject() {
           Initialize a new cell in the hive and begin your luminous journey
         </h4>
       </div>
-      <div className="flex gap-5 max-lg:flex-col">
+      <div className="flex gap-5 p-4 max-lg:flex-col">
         <Form />
         <Tips />
       </div>

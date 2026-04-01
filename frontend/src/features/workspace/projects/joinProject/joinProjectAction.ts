@@ -1,5 +1,5 @@
 "use server";
-import api from "@/lib/axiosInstance";
+import api from "@/shared/lib/axiosInstance";
 import { revalidateTag } from "next/cache";
 import type { useFormState } from "@/shared/hooks/useForm";
 const joinProjectAction = async (

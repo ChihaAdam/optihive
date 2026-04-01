@@ -1,8 +1,7 @@
 import Accordion from "@/shared/components/ui/accordion/accordion";
-import { getUserInfo } from "./getUserInfo";
+import getUserInfo from "./getUserInfo";
 import { AlertCircle } from "lucide-react";
 import { Avatar } from "@radix-ui/themes";
-import Image from "next/image";
 async function UserCard() {
   let user;
   try {

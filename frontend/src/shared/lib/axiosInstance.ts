@@ -1,12 +1,24 @@
-import axios from "axios";
+import axios, { InternalAxiosRequestConfig } from "axios";
 import { deleteToken, getToken } from "@/features/auth/token";
+
+/*
+  we need to skip the response interceptor for the cached requests
+  so we need to add a flag to the request config
+  if the flag is true, we skip the response interceptor
+*/
+declare module "axios" {
+  interface AxiosRequestConfig {
+    skipResponseInterceptor?: boolean;
+  }
+}
+
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
-api.interceptors.request.use(async (config) => {
+api.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
   try {
     if (config.headers.Authorization)
       return config; /* to handle cached requests */
@@ -22,7 +34,10 @@ api.interceptors.request.use(async (config) => {
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response.status === 401) {
+    if (error.response?.config?.skipResponseInterceptor) {
+      return error;
+    }
+    if (error.response?.status === 401) {
       try {
         await deleteToken();
       } catch (error) {

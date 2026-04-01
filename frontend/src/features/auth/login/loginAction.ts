@@ -1,5 +1,5 @@
 "use server";
-import api from "@/lib/axiosInstance";
+import api from "@/shared/lib/axiosInstance";
 import { setToken } from "../token";
 
 interface loginActionState {
