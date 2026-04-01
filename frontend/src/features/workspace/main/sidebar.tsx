@@ -19,21 +19,21 @@ function Sidebar() {
           <p>New Project</p>
         </Link>
         <Link href="/workspace/profile" className="px-5 py-2 text-foreground">
+          {/*TODO: add profile page */}
           <User size={20} />
           <p>Profile</p>
         </Link>
-        <Link href="/settings" className="px-5 py-2 text-foreground">
-          {/*TODO: add settings page */}
+        <Link href="/workspace/settings" className="px-5 py-2 text-foreground">
           <Settings size={20} />
           <p>Settings</p>
         </Link>
       </div>
       <div className="flex flex-col gap-2">
         <button
-          className="cursor-pointer flex gap-2 px-5 items-center text-md w-64 rounded-l-none rounded-r-lg py-2 bg-red-500/20 hover:bg-red-500/30 transition-colors duration-300 ease-in-out"
+          className="cursor-pointer flex gap-2 px-5 items-center text-md w-64 rounded-l-none rounded-r-lg py-2 bg-red-500/90 font-bold text-lg hover:bg-red-500 text-white transition-colors duration-300 ease-in-out"
           onClick={logoutAction}
         >
-          <LogOut size={20} />
+          <LogOut size={25} />
           <p>Logout</p>
         </button>
       </div>

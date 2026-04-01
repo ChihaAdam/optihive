@@ -1,12 +1,11 @@
 "use client";
 import { useActionState } from "react";
 import useToast from "./useToast";
-import { useRef, useState, useEffect } from "react";
 export type useFormState = {
   success: boolean | null;
   timespan: number;
 };
-type useFormProps = {
+export type useFormProps = {
   successMessage: string;
   errorMessage: string;
   action: (state: useFormState, formData: FormData) => Promise<useFormState>;

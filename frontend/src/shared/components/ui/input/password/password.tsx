@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Input from "../input";
 import { Eye, EyeOff } from "lucide-react";
 
 type passwordProps = React.InputHTMLAttributes<HTMLInputElement> & {

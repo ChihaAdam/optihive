@@ -10,11 +10,7 @@ function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
       <main className="flex h-full w-full flex-1 overflow-y-hidden">
         <Sidebar />
         <section className="flex-1 p-5 h-full overflow-y-hidden">
-          <ScrollArea
-            type="always"
-            scrollbars="vertical"
-            className="h-full p-4"
-          >
+          <ScrollArea type="always" scrollbars="vertical" className="h-full">
             {children}
           </ScrollArea>
         </section>

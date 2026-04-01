@@ -1,6 +1,3 @@
-import React from "react";
-import Card from "./card";
-import { Calendar, Lightbulb, ChartNoAxesCombined } from "lucide-react";
 import AiProjectManagement from "./ai-project-management";
 function Solutions() {
   return (
