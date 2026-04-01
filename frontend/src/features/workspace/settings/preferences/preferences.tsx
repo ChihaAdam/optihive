@@ -1,5 +1,6 @@
 import { H4Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
-import Avatars from "./avatars";
+import Avatars from "./avatar/avatars";
+import Darkmode from "./darkmode/darkmode";
 function Preferences() {
   return (
     <div className="flex flex-col gap-3 bg-foreground/10 p-5 rounded-lg">
@@ -10,6 +11,7 @@ function Preferences() {
         </p>
       </div>
       <Avatars />
+      <Darkmode />
     </div>
   );
 }
