@@ -1,6 +1,6 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 import { deleteToken, getToken } from "@/features/auth/token";
-
+import { redirect } from "next/navigation";
 /*
   we need to skip the response interceptor for the cached requests
   so we need to add a flag to the request config
@@ -40,6 +40,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       try {
         await deleteToken();
+        redirect("/login");
       } catch (error) {
         console.error(error);
       }

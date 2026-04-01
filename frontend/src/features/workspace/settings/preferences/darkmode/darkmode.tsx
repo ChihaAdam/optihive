@@ -2,7 +2,7 @@ import { H5Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant
 import ToggleDarkmodeSwitch from "./toggleDarkmodeSwitch";
 function Darkmode() {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 w-1/2 max-md:w-full">
       <H5Gradiant>Darkmode</H5Gradiant>
       <div className="flex items-center gap-2">
         <label htmlFor="darkmode" className="text-foreground/80 text-md">

@@ -1,7 +1,7 @@
 import { cacheTag } from "next/cache";
 import { deleteToken, getToken } from "@/features/auth/token";
 import api from "./axiosInstance";
-
+import { redirect } from "next/navigation";
 /* 
   this function is used to fetch data from the server
   it uses the cacheTag function to cache the data
@@ -50,6 +50,7 @@ export const fetcher = async ({
   } catch (error: any) {
     if (error.response?.status === 401) {
       await deleteToken();
+      redirect("/login");
     }
     throw error;
   }

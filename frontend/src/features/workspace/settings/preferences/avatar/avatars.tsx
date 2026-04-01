@@ -47,9 +47,9 @@ const avatars = [
 async function Avatars() {
   const user = await getUserInfo();
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 w-1/2 max-md:w-full">
       <H5Gradiant>Avatar</H5Gradiant>
-      <div className="grid grid-cols-5 gap-5 w-fit">
+      <div className="grid grid-cols-5 gap-5">
         {avatars.map((avatar) => (
           <Avatar
             key={avatar.id}
