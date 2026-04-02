@@ -32,7 +32,12 @@ api.interceptors.request.use(async (config: InternalAxiosRequestConfig) => {
   return config;
 });
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (response.config.skipResponseInterceptor) {
+      return response;
+    }
+    return response;
+  },
   async (error) => {
     if (error.response?.config?.skipResponseInterceptor) {
       return error;

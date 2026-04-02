@@ -61,9 +61,9 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={`${inter.className} antialiased`}>
+        <DarkmodeProvider />
         <Theme>{children}</Theme>
         <ToastContainer position="bottom-right" />
-        <DarkmodeProvider />
       </body>
     </html>
   );

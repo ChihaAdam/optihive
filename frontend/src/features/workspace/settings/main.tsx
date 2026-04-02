@@ -1,7 +1,7 @@
 import { H3Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
 import Profile from "./profile/profile";
 import Preferences from "./preferences/preferences";
-function Main() {
+async function Main() {
   return (
     <section className="flex flex-col gap-5 p-5">
       <H3Gradiant>Settings</H3Gradiant>

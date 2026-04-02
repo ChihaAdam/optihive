@@ -13,4 +13,13 @@ const useDarkmodeStore = create<DarkmodeStoreType>((set) => ({
       return { darkMode: newDarkMode };
     }),
 }));
-export default useDarkmodeStore;
+
+const useDarkmode = () => {
+  const darkMode = useDarkmodeStore((state) => state.darkMode);
+  const toggleDarkMode = useDarkmodeStore((state) => state.toggleDarkMode);
+  console.log(darkMode);
+  console.log(toggleDarkMode);
+  return { darkMode, toggleDarkMode };
+};
+
+export default useDarkmode;
