@@ -3,9 +3,8 @@ import { H3Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant
 import UserCard from "./user-card";
 import Role from "./role";
 import ProjectAnalysis from "./projectAnalysis";
-import Button from "@/shared/components/ui/button/button";
-import { Pen } from "lucide-react";
-
+import EditRoleNameDialog from "./editRoleName/editRoleNameDialog";
+import EditRoleDescriptionDialog from "./editRoleDescription/editRoleDescriptionDialog";
 async function Main() {
   const user = await getUserInfo();
   return (
@@ -21,19 +20,13 @@ async function Main() {
             email={user.email}
             avatar={user.avatar}
           />
-          <Button
-            variant="primary"
-            size="lg"
-            className="tracking-wide font-bold flex items-center gap-2 justify-center"
-          >
-            <Pen size={20} />
-            Edit role
-          </Button>
+          <EditRoleNameDialog />
+          <EditRoleDescriptionDialog />
         </div>
         <div className="flex-3/4 flex flex-col gap-5">
           <Role
-            roleName={user.role?.name}
-            roleDescription={user.role?.description}
+            roleName={user.roleName}
+            roleDescription={user.roleDescription}
           />
           <ProjectAnalysis />
         </div>

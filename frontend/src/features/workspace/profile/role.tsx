@@ -1,7 +1,7 @@
 import Input from "@/shared/components/ui/input/input";
 import Textarea from "@/shared/components/ui/textarea/textarea";
 import { H4Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
-
+import { ScrollArea } from "@radix-ui/themes";
 type RoleProps = {
   roleName: string;
   roleDescription: string;
@@ -17,11 +17,14 @@ function Role({ roleName, roleDescription }: Readonly<RoleProps>) {
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="role">role description : </label>
-        <Textarea
-          value={roleDescription || "no role description specified"}
-          disabled
-          readOnly
-        />
+        <ScrollArea type="always" scrollbars="both" className="max-h-96 p-4">
+          <Textarea
+            value={roleDescription || "no role description specified"}
+            className="w-full h-full resize-none field-sizing-content"
+            disabled
+            readOnly
+          />
+        </ScrollArea>
       </div>
     </div>
   );
