@@ -11,7 +11,7 @@ type AvatarProps = HTMLAttributes<HTMLFormElement> & {
   isSelected: boolean;
 };
 
-function Avatar({ avatar, isSelected, ...props }: AvatarProps) {
+function Avatar({ avatar, isSelected, ...props }: Readonly<AvatarProps>) {
   const { formAction } = useForm({
     action: (state, formData: FormData) => {
       formData.append("avatar", avatar.id.toString());

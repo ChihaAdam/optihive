@@ -1,6 +1,5 @@
 import api from "@/shared/lib/axiosInstance";
 import { setToken } from "../token";
-
 interface signupActionState {
   error: string | null;
 }
@@ -12,7 +11,6 @@ export const signupAction = async (
     const username = formData.get("username") as string;
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
-    console.log(username, email, password);
     const response = await api.post("/users/register", {
       username,
       email,

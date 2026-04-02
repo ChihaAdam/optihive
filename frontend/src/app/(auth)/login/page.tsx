@@ -1,8 +1,12 @@
 import Login from "@/features/auth/login/login";
 import Image from "next/image";
-import { reverseProtectedAction } from "@/features/auth/protectedAction";
+import { getToken } from "@/features/auth/token";
+import { redirect } from "next/navigation";
 async function Page() {
-  await reverseProtectedAction();
+  const token = await getToken();
+  if (token) {
+    redirect("/workspace");
+  }
   return (
     <div className="flex flex-col gap-10 items-center justify-center h-screen">
       <Image

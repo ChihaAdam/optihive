@@ -1,9 +1,17 @@
 "use client";
 
-import useApplyDarkmode from "./useApplyDarkmode";
-
+import { useEffect } from "react";
+import useDarkmode from "./darkmodeStore";
 function DarkmodeProvider() {
-  useApplyDarkmode();
+  const { darkMode } = useDarkmode();
+  useEffect(() => {
+    if (!globalThis.document) return;
+    if (darkMode) {
+      globalThis.document?.documentElement?.classList?.add("dark");
+    } else {
+      globalThis.document?.documentElement?.classList?.remove("dark");
+    }
+  }, [darkMode]);
   return null;
 }
 

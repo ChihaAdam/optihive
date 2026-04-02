@@ -1,4 +1,4 @@
-import Navbar from "@/features/navbar/navbar";
+import Navbar from "@/features/main/navbar/navbar";
 import Home from "@/features/main/home/home";
 import Solutions from "@/features/main/solutions/solutions";
 import About from "@/features/main/about/about";
