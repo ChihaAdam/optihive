@@ -1,5 +1,5 @@
 import Accordion from "@/shared/components/ui/accordion/accordion";
-import getUserInfo from "./getUserInfo";
+import getUserInfo from "../../../../shared/actions/getUserInfo";
 import { AlertCircle } from "lucide-react";
 import { Avatar } from "@radix-ui/themes";
 async function UserCard() {

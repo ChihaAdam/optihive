@@ -53,7 +53,7 @@ export const getMe = async (req, res, next) => {
 
 export const updateProfile = async (req, res, next) => {
   try {
-    const info = req.body;
+    const info = { ...req.body };
     if (info.password) {
       info.password = await hashPassword(info.password);
     }

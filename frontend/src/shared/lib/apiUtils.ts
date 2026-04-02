@@ -1,3 +1,4 @@
+"use server";
 import { cacheTag } from "next/cache";
 import { deleteToken, getToken } from "@/features/auth/token";
 import api from "./axiosInstance";
