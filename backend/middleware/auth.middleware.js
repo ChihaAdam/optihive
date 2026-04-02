@@ -8,7 +8,7 @@ export const authMiddleware = (req, _res, next) => {
       throw err;
     }
     const decodedToken = verifyToken(token);
-    req.userId = decodedToken.id;
+    req.userId = decodedToken.id?.toString();
     next();
   } catch (err) {
     next(err);

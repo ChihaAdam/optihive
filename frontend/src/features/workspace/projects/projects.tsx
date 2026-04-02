@@ -1,5 +1,5 @@
 import { H3Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
-import { getProjectsAction } from "./getProjectsAction";
+import { getProjectsAction } from "../../../shared/actions/getProjectsAction";
 import JoinProjectCard from "./joinProject/joinProjectCard";
 import ProjectCard from "./projectCard";
 

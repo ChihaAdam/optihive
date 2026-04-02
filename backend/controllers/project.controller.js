@@ -2,25 +2,14 @@ import Project from "../model/project.model.js";
 import Membership from "../model/membership.model.js";
 export const createProject = async (req, res, next) => {
   try {
-    const { projectName, projectDescription, deadline } = req.body;
-    if (!projectName || !deadline) {
-      const error = new Error("All fields are required");
-      error.statusCode = 400;
-      throw error;
-    }
-    const deadlineDate = new Date(deadline);
-    if (deadlineDate < Date.now()) {
-      const error = new Error("Deadline must be in the future");
-      error.statusCode = 400;
-      throw error;
-    }
+    const { projectName, projectDescription, deadline } = req.projectDetails;
     const project = await Project.create({
       creatorId: req.userId,
       projectName,
       projectDescription,
-      deadline: deadlineDate,
+      deadline: deadline,
     });
-    const membership = await Membership.create({
+    await Membership.create({
       userId: req.userId,
       projectId: project._id,
       role: "project_manager",
@@ -57,7 +46,7 @@ export const getProjects = async (req, res, next) => {
 
 export const joinProject = async (req, res, next) => {
   try {
-    const { invitationCode } = req.body;
+    const invitationCode = req?.body?.invitationCode?.toString()?.trim();
     const userId = req.userId;
     if (!invitationCode) {
       const error = new Error("Invitation code is required");
