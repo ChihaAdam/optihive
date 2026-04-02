@@ -19,7 +19,6 @@ function Sidebar() {
           <p>New Project</p>
         </Link>
         <Link href="/workspace/profile" className="px-5 py-2 text-foreground">
-          {/*TODO: add profile page */}
           <User size={20} />
           <p>Profile</p>
         </Link>
