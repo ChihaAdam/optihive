@@ -4,8 +4,8 @@ import morgan from "morgan";
 import chalk from "chalk";
 import cookieParser from "cookie-parser";
 import { errorHandler } from "./middleware/errorHandling.middleware.js";
-import userRoutes from "./routes/user.route.js";
-import projectRoutes from "./routes/project.route.js";
+import userRoutes from "./routes/user/user.route.js";
+import projectRoutes from "./routes/project/project.route.js";
 import { PORT } from "./config/env.js";
 import connectDB from "./config/databaseConnection.js";
 const app = express();
@@ -23,3 +23,4 @@ app.listen(PORT, async () => {
   await connectDB();
   console.log(chalk.green.bold(`Server running on port ${PORT}`));
 });
+export default app;

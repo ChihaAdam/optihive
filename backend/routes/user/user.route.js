@@ -4,13 +4,13 @@ import {
   login,
   getMe,
   updateProfile,
-} from "../controllers/user.controller.js";
-import { authMiddleware } from "../middleware/auth.middleware.js";
+} from "../../controllers/user.controller.js";
+import { authMiddleware } from "../../middleware/auth.middleware.js";
 import {
   validateUsername,
   validateEmail,
   validatePassword,
-} from "../middleware/validate-user-input.middleware.js";
+} from "../../middleware/validate-user-input.middleware.js";
 const router = Router();
 
 router.post(
