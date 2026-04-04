@@ -3,6 +3,7 @@ import {
   createProject,
   getProjects,
   joinProject,
+  getProjectById,
 } from "../../controllers/project.controller.js";
 import { authMiddleware } from "../../middleware/auth.middleware.js";
 import { validateProjectMiddleware } from "../../middleware/validate-project.middleware.js";
@@ -11,6 +12,7 @@ const router = Router();
 
 router.use(authMiddleware);
 router.get("/", getProjects);
+router.get("/:projectId", getProjectById);
 router.post("/create", validateProjectMiddleware, createProject);
 router.post("/join", joinProject);
 router.use("/features", featureRoutes);
