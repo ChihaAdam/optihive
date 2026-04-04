@@ -1,5 +1,6 @@
 import Project from "../model/project.model.js";
 import Membership from "../model/membership.model.js";
+import { getProjectByIdHelper } from "../helpers/project.helpers.js";
 export const createProject = async (req, res, next) => {
   try {
     const { projectName, projectDescription, deadline } = req.projectDetails;
@@ -65,6 +66,22 @@ export const joinProject = async (req, res, next) => {
       role: "member",
     });
     return res.status(201).json({ message: "Project joined successfully" });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getProjectById = async (req, res, next) => {
+  try {
+    const { projectId } = req.params;
+    const role = req.role;
+    const { project, members } = await getProjectByIdHelper(projectId, role);
+    if (!project) {
+      const error = new Error("Project not found");
+      error.statusCode = 404;
+      throw error;
+    }
+    return res.status(200).json({ project, members });
   } catch (err) {
     next(err);
   }
