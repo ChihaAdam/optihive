@@ -31,7 +31,6 @@ describe("project", () => {
       .get(`/api/v1/projects`)
       .set("Authorization", `Bearer ${token}`);
     const project = getProjectResponse.body.projects[0];
-    console.log(project);
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("message");
     expect(getProjectResponse.status).toBe(200);

@@ -16,7 +16,7 @@ const router = express.Router();
     and we only need to check if the user is a member of the project
     and if the user is a manager of the project
 */
-router.post("/", isProjectManager, validateInput, createFeature);
-router.get("/", isProjectMember, getFeatures);
+router.post("/:projectId", isProjectManager, validateInput, createFeature);
+router.get("/:projectId", isProjectMember, getFeatures);
 
 export default router;

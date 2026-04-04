@@ -10,7 +10,7 @@ export const validateInput = (req, res, next) => {
     throw err;
   }
   const featureStatusEnum = ["active", "completed", "in_review"];
-  if (!featureStatusEnum.includes(featureStatus)) {
+  if (featureStatus && !featureStatusEnum.includes(featureStatus)) {
     const err = new Error("Invalid feature status");
     err.statusCode = 400;
     throw err;

@@ -9,13 +9,9 @@ import { validateProjectMiddleware } from "../../middleware/validate-project.mid
 import featureRoutes from "./feature.route.js";
 const router = Router();
 
-router.get("/", authMiddleware, getProjects);
-router.post(
-  "/create",
-  authMiddleware,
-  validateProjectMiddleware,
-  createProject,
-);
-router.post("/join", authMiddleware, joinProject);
-router.use("/:projectId/features", featureRoutes);
+router.use(authMiddleware);
+router.get("/", getProjects);
+router.post("/create", validateProjectMiddleware, createProject);
+router.post("/join", joinProject);
+router.use("/features", featureRoutes);
 export default router;
