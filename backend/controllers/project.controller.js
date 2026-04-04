@@ -74,7 +74,8 @@ export const joinProject = async (req, res, next) => {
 export const getProjectById = async (req, res, next) => {
   try {
     const { projectId } = req.params;
-    const { project, members } = await getProjectByIdHelper(projectId);
+    const role = req.role;
+    const { project, members } = await getProjectByIdHelper(projectId, role);
     if (!project) {
       const error = new Error("Project not found");
       error.statusCode = 404;

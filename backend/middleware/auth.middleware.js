@@ -36,6 +36,7 @@ export const isProjectMember = async (req, res, next) => {
       err.statusCode = 403;
       throw err;
     }
+    req.role = membership.role;
     next();
   } catch (err) {
     next(err);
@@ -65,6 +66,7 @@ export const isProjectManager = async (req, res, next) => {
       err.statusCode = 403;
       throw err;
     }
+    req.role = membership.role;
     next();
   } catch (err) {
     next(err);
