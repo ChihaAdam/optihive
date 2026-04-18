@@ -1,6 +1,7 @@
 import Navbar from "@/features/workspace/main/navbar/navbar";
 import Sidebar from "@/features/workspace/main/sidebar";
 import { ScrollArea } from "@radix-ui/themes";
+import { Suspense } from "react";
 function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div className="flex flex-col h-screen">
@@ -8,11 +9,15 @@ function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
         <Navbar />
       </header>
       <main className="flex h-full w-full flex-1 overflow-y-hidden">
-        <Sidebar />
+        <Suspense>
+          <Sidebar />
+        </Suspense>
         <section className="flex-1 p-5 h-full overflow-y-hidden">
-          <ScrollArea type="always" scrollbars="vertical" className="h-full">
-            {children}
-          </ScrollArea>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ScrollArea type="always" scrollbars="vertical" className="h-full">
+              {children}
+            </ScrollArea>
+          </Suspense>
         </section>
       </main>
     </div>

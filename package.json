@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "concurrently \"cd backend && docker-compose up -d && npm run dev\" \"cd frontend && npm run dev\""
+    "dev": "concurrently \"cd backend && docker-compose up -d && npm run dev\" \"cd frontend && pnpm run dev\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

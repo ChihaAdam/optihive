@@ -13,7 +13,12 @@ function Role({ roleName, roleDescription }: Readonly<RoleProps>) {
       <H4Gradiant>Role</H4Gradiant>
       <div className="flex flex-col gap-2">
         <label htmlFor="role">role name : </label>
-        <Input value={roleName || "no role specified"} disabled readOnly />
+        <Input
+          value={roleName || "no role specified"}
+          disabled
+          readOnly
+          className="mx-4"
+        />
       </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="role">role description : </label>
