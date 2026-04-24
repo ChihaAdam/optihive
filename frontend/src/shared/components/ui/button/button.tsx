@@ -35,13 +35,13 @@ function button({
     return (
       <Comp
         {...child.props}
-        className={`${sizeClass[size]} ${variantClass[variant]} ${className} rounded-lg cursor-pointer`}
+        className={`${sizeClass[size]} ${variantClass[variant]} ${className} rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed `}
       />
     );
   }
   return (
     <button
-      className={`${sizeClass[size]} ${variantClass[variant]} ${className} rounded-lg cursor-pointer`}
+      className={`${sizeClass[size]} ${variantClass[variant]} ${className} rounded-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed`}
       {...props}
     >
       {children}

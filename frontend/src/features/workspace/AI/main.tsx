@@ -1,0 +1,30 @@
+"use client";
+import useChat from "./useChat";
+import UserMessage from "./userMessage";
+import AssistantMessage from "./assistantMessage";
+
+import { ScrollArea } from "@radix-ui/themes";
+import Form from "./form";
+function AskJimmy() {
+  const { chatHistory, isTyping, sendMessage } = useChat();
+
+  return (
+    <div className="flex flex-col gap-2 h-full p-4">
+      <ScrollArea>
+        <div className="h-full flex-1 flex flex-col gap-2 p-4">
+          {chatHistory.map((message, index) =>
+            message.role === "user" ? (
+              <UserMessage key={index} message={message.content} />
+            ) : (
+              <AssistantMessage key={index} message={message.content} />
+            ),
+          )}
+          {isTyping && <AssistantMessage message="Thinking..." />}
+        </div>
+      </ScrollArea>
+      <Form sendMessage={sendMessage} disabled={isTyping} />
+    </div>
+  );
+}
+
+export default AskJimmy;

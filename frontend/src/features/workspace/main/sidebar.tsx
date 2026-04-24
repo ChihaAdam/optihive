@@ -1,4 +1,4 @@
-import { LogOut, Settings, Plus, User, Folder } from "lucide-react";
+import { LogOut, Settings, Plus, User, Folder, Bot } from "lucide-react";
 import Link from "@/features/workspace/components/link";
 import { H4Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
 import logoutAction from "./logoutAction";
@@ -21,6 +21,10 @@ function Sidebar() {
         <Link href="/workspace/profile" className="px-5 py-2 text-foreground">
           <User size={20} />
           <p>Profile</p>
+        </Link>
+        <Link href="/workspace/ask-jimmy" className="px-5 py-2 text-foreground">
+          <Bot size={20} />
+          <p>Ask Jimmy</p>
         </Link>
         <Link href="/workspace/settings" className="px-5 py-2 text-foreground">
           <Settings size={20} />
