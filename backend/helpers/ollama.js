@@ -15,7 +15,8 @@ const TalkToOllama = async (messages) => {
     options: {
       temperature: 0.7,
     },
+    stream: true,
   });
-  return response.message.content;
+  return response;
 };
 export default TalkToOllama;
