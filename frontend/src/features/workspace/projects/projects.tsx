@@ -26,6 +26,7 @@ async function Projects() {
             projectCreatedAt={project.projectCreatedAt}
             role={project.role}
             createdAt={project.createdAt}
+            projectId={project._id}
           />
         ))}
       </div>

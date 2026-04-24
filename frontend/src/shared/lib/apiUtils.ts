@@ -1,7 +1,7 @@
 "use server";
 import { cacheTag } from "next/cache";
 import { deleteToken, getToken } from "@/features/auth/token";
-import api from "./axiosInstance";
+import { cacheApi } from "./axiosInstance";
 import { redirect } from "next/navigation";
 /* 
   this function is used to fetch data from the server
@@ -33,9 +33,8 @@ export const fetcherWithCache = async ({
     throw err;
   }
 
-  const response = await api.get(url, {
+  const response = await cacheApi.get(url, {
     headers: { Authorization: `Bearer ${token}` },
-    skipResponseInterceptor: true,
   });
   return response.data;
 };

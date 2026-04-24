@@ -17,7 +17,7 @@ export const loginAction = async (
     return { error: null } as loginActionState;
   } catch (error: any) {
     return {
-      error: error.response.data.message || "Something went wrong",
+      error: error?.response?.data?.message || "Something went wrong",
     } as loginActionState;
   }
 };

@@ -62,7 +62,6 @@ describe("project", () => {
     const getProjectByIdResponse = await request(app)
       .get(`/api/v1/projects/${project._id}`)
       .set("Authorization", `Bearer ${token}`);
-    console.log(JSON.stringify(getProjectByIdResponse.body));
     expect(getProjectByIdResponse.status).toBe(200);
     expect(getProjectByIdResponse.body).toHaveProperty("project");
     expect(getProjectByIdResponse.body).toHaveProperty("members");

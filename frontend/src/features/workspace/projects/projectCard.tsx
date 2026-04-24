@@ -1,8 +1,10 @@
+"use client";
 import Badge from "./badge";
 import Field from "./field";
-import MembershipBadge from "./membership-badge";
+import MembershipBadge from "../../../shared/components/membership-badge";
 import { format } from "date-fns";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 type Status = "active" | "completed" | "deadline_passed";
 type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> & {
   projectName: string;
@@ -11,7 +13,8 @@ type ProjectCardProps = React.HTMLAttributes<HTMLDivElement> & {
   createdAt: string;
   joinedAt: string;
   projectCreatedAt: string;
-  role: string;
+  role: "project_manager" | "member";
+  projectId: string;
 };
 
 const formatDate = (date: string) => {
@@ -26,11 +29,17 @@ function ProjectCard({
   joinedAt,
   projectCreatedAt,
   role,
+  projectId,
   ...props
 }: Readonly<ProjectCardProps>) {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/workspace/${projectId}`);
+  };
   return (
     <div
       {...props}
+      onClick={handleClick}
       className={`flex flex-col gap-2 p-4 rounded-lg shadow-lg card-dimensions border border-foreground/20 overflow-hidden cursor-pointer hover:bg-foreground/5 border-l-6 ${role === "project_manager" ? "border-l-blue-500" : "border-l-primary"}`}
     >
       <div className="flex items-center justify-between gap-2 p-2">
@@ -39,7 +48,7 @@ function ProjectCard({
           className={`flex gap-2 ${role === "project_manager" ? "flex-col items-end" : ""}`}
         >
           <Badge status={Status} />
-          <MembershipBadge role={role as "project_manager" | "member"} />
+          <MembershipBadge role={role} />
         </div>
       </div>
       <div className="flex flex-col p-2 gap-4">
