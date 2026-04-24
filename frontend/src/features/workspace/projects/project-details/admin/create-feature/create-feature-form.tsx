@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { Plus } from "lucide-react";
 import useForm from "@/shared/hooks/useForm";
 import { createFeatureAction } from "./createFeatureAction";
 import Input from "@/shared/components/ui/input/input";
@@ -9,25 +7,11 @@ import Textarea from "@/shared/components/ui/textarea/textarea";
 import Button from "@/shared/components/ui/button/button";
 
 function CreateFeatureForm({ projectId }: { projectId: string }) {
-  const [isOpen, setIsOpen] = useState(false);
   const { formAction, isPending } = useForm({
     action: createFeatureAction,
     successMessage: "Feature created successfully",
     errorMessage: "Failed to create feature",
   });
-
-  if (!isOpen) {
-    return (
-      <button
-        onClick={() => setIsOpen(true)}
-        className="flex w-fit items-center gap-2 rounded-lg border-2 border-dashed border-foreground/20 px-6 py-3 text-sm font-medium text-foreground/60 transition-colors hover:border-primary hover:text-primary"
-      >
-        <Plus size={18} />
-        Add New Feature
-      </button>
-    );
-  }
-
   return (
     <form
       action={formAction}
@@ -57,20 +41,6 @@ function CreateFeatureForm({ projectId }: { projectId: string }) {
             rows={3}
           />
         </label>
-
-        <label htmlFor="featureStatus" className="flex flex-col gap-1">
-          <span className="text-sm font-medium">Status</span>
-          <select
-            id="featureStatus"
-            name="featureStatus"
-            defaultValue="active"
-            className="rounded-lg border border-foreground/20 bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none"
-          >
-            <option value="active">Active</option>
-            <option value="in_review">In Review</option>
-            <option value="completed">Completed</option>
-          </select>
-        </label>
       </div>
 
       <div className="flex items-center gap-3">
@@ -79,7 +49,6 @@ function CreateFeatureForm({ projectId }: { projectId: string }) {
         </Button>
         <button
           type="button"
-          onClick={() => setIsOpen(false)}
           className="rounded-lg border border-foreground/20 px-4 py-2 font-medium text-foreground/60 transition-colors hover:text-foreground"
         >
           Cancel

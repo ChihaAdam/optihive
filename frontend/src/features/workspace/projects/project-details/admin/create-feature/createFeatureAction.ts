@@ -11,15 +11,12 @@ export async function createFeatureAction(
 ): Promise<useFormState> {
   const featureName = formData.get("featureName") as string;
   const featureDescription = formData.get("featureDescription") as string;
-  const featureStatus = formData.get("featureStatus") as string;
   const projectId = formData.get("projectId") as string;
 
   try {
     await api.post(`/projects/features/${projectId}`, {
       featureName,
       featureDescription,
-      featureStatus,
-      projectId,
     });
     revalidateTag(CACHE_TAGS.PROJECT(projectId), "max");
     return { success: true, timespan: Date.now() };

@@ -6,7 +6,8 @@ type action =
   | "delete task"
   | "add feature"
   | "update feature"
-  | "delete feature";
+  | "delete feature"
+  | "admin page";
 const permissions: Record<string, action[]> = {
   member: [],
   project_manager: [
@@ -16,6 +17,7 @@ const permissions: Record<string, action[]> = {
     "add feature",
     "update feature",
     "delete feature",
+    "admin page",
   ],
 };
 export async function getUserRoleOnProject(projectId: string) {

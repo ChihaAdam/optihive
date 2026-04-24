@@ -1,9 +1,7 @@
 import getProjectFeatures from "../getProjectFeatures";
 import FeatureCard from "./feature-card";
-import CreateFeatureForm from "./create-feature/create-feature-form";
 import { H3Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
 import { LayoutGrid } from "lucide-react";
-import { hasPermission } from "@/features/auth/getUserRoleOnProject";
 type Feature = {
   _id: string;
   featureName: string;
@@ -15,7 +13,6 @@ type Feature = {
 
 async function Features({ id }: { id: string }) {
   const features = (await getProjectFeatures(id)) as Feature[];
-  const canAddFeature = await hasPermission("add feature", id);
   return (
     <div className="flex flex-col gap-6">
       <div className="rounded-lg border border-foreground/10 bg-card/30 p-6 shadow-sm">
@@ -28,8 +25,6 @@ async function Features({ id }: { id: string }) {
               </p>
             </div>
           </div>
-          {/*must be shown only to project manager */}
-          {canAddFeature && <CreateFeatureForm projectId={id} />}
         </div>
       </div>
 
