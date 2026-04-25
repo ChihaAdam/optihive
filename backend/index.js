@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import { errorHandler } from "./middleware/errorHandling.middleware.js";
 import userRoutes from "./routes/user/user.route.js";
 import projectRoutes from "./routes/project/project.route.js";
+import aiRoutes from "./routes/ai/ai.route.js";
 import { PORT } from "./config/env.js";
 import connectDB from "./config/databaseConnection.js";
 const app = express();
@@ -17,6 +18,7 @@ app.use(cookieParser());
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/projects", projectRoutes);
+app.use("/api/v1/ai", aiRoutes);
 app.use(errorHandler);
 
 app.listen(PORT, async () => {
