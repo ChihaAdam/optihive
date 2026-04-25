@@ -1,10 +1,40 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const { PORT, JWT_SECRET, JWT_EXPIRES_IN, MONGO_URI, LLM_MODEL } = process.env;
+const {
+  PORT,
+  JWT_SECRET,
+  JWT_EXPIRES_IN,
+  MONGO_URI,
+  LLM_MODEL,
+  NVIDIA_API_KEY,
+  NVIDIA_MODEL,
+  NVIDIA_API,
+  LLM_MODE,
+} = process.env;
 
-if (!PORT || !JWT_SECRET || !JWT_EXPIRES_IN || !MONGO_URI || !LLM_MODEL) {
+if (
+  !PORT ||
+  !JWT_SECRET ||
+  !JWT_EXPIRES_IN ||
+  !MONGO_URI ||
+  !LLM_MODEL ||
+  !NVIDIA_API_KEY ||
+  !NVIDIA_MODEL ||
+  !NVIDIA_API ||
+  !LLM_MODEL
+) {
   throw new Error("Missing required environment variables");
 }
 
-export { PORT, JWT_SECRET, JWT_EXPIRES_IN, MONGO_URI, LLM_MODEL };
+export {
+  PORT,
+  JWT_SECRET,
+  JWT_EXPIRES_IN,
+  MONGO_URI,
+  LLM_MODEL,
+  NVIDIA_API_KEY,
+  NVIDIA_MODEL,
+  NVIDIA_API,
+  LLM_MODE,
+};

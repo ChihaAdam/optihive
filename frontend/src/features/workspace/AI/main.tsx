@@ -11,7 +11,7 @@ function AskJimmy() {
   return (
     <div className="flex flex-col gap-2 h-full p-4">
       <ScrollArea>
-        <div className="h-full flex-1 flex flex-col gap-2 p-4">
+        <div className="h-full mx-auto flex-1 flex flex-col gap-2 px-24">
           {chatHistory.map((message, index) =>
             message.role === "user" ? (
               <UserMessage key={index} message={message.content} />

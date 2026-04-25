@@ -1,23 +1,31 @@
-import TalkToOllama from "../helpers/ollama.js";
-
+import llm from "../helpers/llm/LLM.js";
 export const askJimmy = async (req, res, next) => {
   const { history } = req.body;
+  
   try {
-    const response = await TalkToOllama([...history]);
+    const response = llm.generateContent(history || []);
 
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
 
-    for await (const chunk of response) {
-      res.write(
-        `data: ${JSON.stringify({ content: chunk.message.content })}\n\n`,
-      );
+    try {
+      for await (const chunk of response) {
+        if (!chunk?.content) continue;
+        res.write(`data: ${JSON.stringify({ content: chunk.content })}\n\n`);
+      }
+      res.write("data: [DONE]\n\n");
+    } catch (streamError) {
+      console.error("LLM Stream error:", streamError);
+      res.write(`data: ${JSON.stringify({ error: "Stream interrupted" })}\n\n`);
+    } finally {
+      res.end();
     }
-
-    res.write("data: [DONE]\n\n");
-    res.end();
   } catch (error) {
-    next(error);
+    if (res.headersSent) {
+      res.end();
+    } else {
+      next(error);
+    }
   }
 };
