@@ -6,19 +6,31 @@ interface Message {
   role: "user" | "assistant";
   content: string;
 }
-
-function useChat() {
+type Status = "idle" | "thinking" | "typing" | "error";
+interface useChatReturn {
+  chatHistory: Array<Message>;
+  status: Status;
+  sendMessage: (message: string) => Promise<void>;
+  canWrite: boolean;
+  isThinking: boolean;
+  isTyping: boolean;
+  isError: boolean;
+}
+function useChat(): useChatReturn {
   const [chatHistory, setChatHistory] = useState<Array<Message>>([]);
-  const [isTyping, setIsTyping] = useState(false);
-
+  const [status, setStatus] = useState<Status>("idle");
+  const canWrite = status === "idle" || status === "error";
+  const isThinking = status === "thinking";
+  const isTyping = status === "typing";
+  const isError = status === "error";
   async function sendMessage(message: string) {
+    if (!canWrite) return;
     const newHistory: Message[] = [
       ...chatHistory,
       { role: "user", content: message },
     ];
     setChatHistory(newHistory);
-    setIsTyping(true);
-
+    setStatus("thinking");
     try {
       const token = await getToken();
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/ai`, {
@@ -31,9 +43,7 @@ function useChat() {
           history: newHistory,
         }),
       });
-
-      setIsTyping(false);
-
+      setStatus("typing");
       if (!response.body) throw new Error("No response body");
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
@@ -70,10 +80,19 @@ function useChat() {
         }
       }
     } catch (error) {
-      console.error(error);
-      setIsTyping(false);
+      setStatus("error");
+    } finally {
+      setStatus("idle");
     }
   }
-  return { chatHistory, isTyping, sendMessage };
+  return {
+    chatHistory,
+    status,
+    sendMessage,
+    canWrite,
+    isError,
+    isThinking,
+    isTyping,
+  };
 }
 export default useChat;

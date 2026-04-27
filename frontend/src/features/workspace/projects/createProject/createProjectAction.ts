@@ -2,6 +2,7 @@
 import api from "@/shared/lib/axiosInstance";
 import { revalidateTag } from "next/cache";
 import type { useFormState } from "@/shared/hooks/useForm";
+import { CACHE_TAGS } from "@/shared/cache/cacheTags";
 export async function createProjectAction(
   _prevState: useFormState,
   formData: FormData,
@@ -20,7 +21,7 @@ export async function createProjectAction(
       projectDescription: description,
       deadline: usDeadline,
     });
-    revalidateTag("projects", "max");
+    revalidateTag(CACHE_TAGS.PROJECTS, "max");
     return { success: true, timespan: Date.now() };
   } catch (error) {
     return { success: false, timespan: Date.now() };

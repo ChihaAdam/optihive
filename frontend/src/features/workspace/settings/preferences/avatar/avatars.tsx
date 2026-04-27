@@ -1,5 +1,5 @@
 import { H5Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
-import getUserInfo from "../../../../../shared/actions/getUserInfo";
+import getUserInfo from "@/shared/actions/getUserInfo";
 import Avatar from "./avatar";
 
 const avatars = [

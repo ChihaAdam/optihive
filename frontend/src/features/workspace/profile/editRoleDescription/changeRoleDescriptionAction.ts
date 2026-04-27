@@ -10,7 +10,7 @@ const changeRoleDescriptionAction = async (
   try {
     const roleDescription = formData.get("roleDescription") as string;
     await api.patch("/users/me", { roleDescription });
-    revalidateTag(CACHE_TAGS.USER, "max");
+    revalidateTag(CACHE_TAGS.USER_INFO, "max");
     return { success: true, timespan: Date.now() };
   } catch (error: any) {
     return {

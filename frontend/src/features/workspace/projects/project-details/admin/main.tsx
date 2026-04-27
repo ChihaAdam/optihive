@@ -1,5 +1,4 @@
 import { H3Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
-import React from "react";
 import CreateFeatureForm from "./create-feature/create-feature-form";
 function AdminMain({ id }: { id: string }) {
   return (
