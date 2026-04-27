@@ -1,4 +1,4 @@
-import getProjectFeatures from "../getProjectFeatures";
+import getProjectFeatures from "./getProjectFeatures";
 import FeatureCard from "./feature-card";
 import { H3Gradiant } from "@/shared/components/ui/title-gradiant/title-gradiant";
 import { LayoutGrid } from "lucide-react";

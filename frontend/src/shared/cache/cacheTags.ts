@@ -1,5 +1,5 @@
 export const CACHE_TAGS = {
-  USER: "user",
+  USER_INFO: "user-info",
   PROJECTS: "projects",
   PROJECT: (id: string) => `project-${id}`,
 };

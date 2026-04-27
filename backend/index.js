@@ -9,7 +9,19 @@ import projectRoutes from "./routes/project/project.route.js";
 import aiRoutes from "./routes/ai/ai.route.js";
 import { PORT } from "./config/env.js";
 import connectDB from "./config/databaseConnection.js";
+import { createServer } from "node:http";
+import { Server } from "socket.io";
+import socketHandler from "./socket.js";
 const app = express();
+const server = createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
+
+socketHandler(io);
 
 app.use(cors());
 app.use(express.json());

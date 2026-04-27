@@ -6,7 +6,7 @@ import AssistantMessage from "./assistantMessage";
 import { ScrollArea } from "@radix-ui/themes";
 import Form from "./form";
 function AskJimmy() {
-  const { chatHistory, isTyping, sendMessage } = useChat();
+  const { chatHistory, isThinking, canWrite, sendMessage } = useChat();
 
   return (
     <div className="flex flex-col gap-2 h-full p-4">
@@ -19,10 +19,10 @@ function AskJimmy() {
               <AssistantMessage key={index} message={message.content} />
             ),
           )}
-          {isTyping && <AssistantMessage message="Thinking..." />}
+          {isThinking && <AssistantMessage message="Thinking..." />}
         </div>
       </ScrollArea>
-      <Form sendMessage={sendMessage} disabled={isTyping} />
+      <Form sendMessage={sendMessage} disabled={!canWrite} />
     </div>
   );
 }

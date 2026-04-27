@@ -2,6 +2,7 @@
 import api from "@/shared/lib/axiosInstance";
 import { revalidateTag } from "next/cache";
 import type { useFormState } from "@/shared/hooks/useForm";
+import { CACHE_TAGS } from "@/shared/cache/cacheTags";
 export async function updateUsernameAction(
   _state: useFormState,
   formData: FormData,
@@ -15,7 +16,7 @@ export async function updateUsernameAction(
       };
     }
     await api.patch("/users/me", { username });
-    revalidateTag("userInfo", "max");
+    revalidateTag(CACHE_TAGS.USER_INFO, "max");
     return {
       success: true,
       timespan: Date.now(),
@@ -41,7 +42,7 @@ export async function updatePasswordAction(
       };
     }
     await api.patch("/users/me", { password });
-    revalidateTag("userInfo", "max");
+    revalidateTag(CACHE_TAGS.USER_INFO, "max");
     return {
       success: true,
       timespan: Date.now(),

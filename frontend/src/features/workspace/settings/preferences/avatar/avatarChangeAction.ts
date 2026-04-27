@@ -16,7 +16,7 @@ export default async function avatarChangeAction(
     await api.patch("/users/me", {
       avatar: Number(formData.get("avatar")),
     });
-    revalidateTag(CACHE_TAGS.USER, "max");
+    revalidateTag(CACHE_TAGS.USER_INFO, "max");
     return {
       success: true,
       timespan: Date.now(),

@@ -3,7 +3,7 @@ import { getUserRoleOnProject } from "@/features/auth/getUserRoleOnProject";
 const routes = [
   { href: "/workspace/[id]", label: "overview", requireAdmin: false },
   { href: "/workspace/[id]/features", label: "features", requireAdmin: false },
-  { href: "/workspace/[id]/tasks", label: "tasks", requireAdmin: false },
+  { href: "/workspace/[id]/chat", label: "chat", requireAdmin: false },
   { href: "/workspace/[id]/admin", label: "admin", requireAdmin: true },
 ];
 const formatPath = (path: string, id: string) => {

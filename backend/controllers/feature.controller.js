@@ -1,8 +1,8 @@
 import Feature from "../model/feature.model.js";
 export const createFeature = async (req, res, next) => {
   try {
-    const { featureName, featureDescription, featureStatus, projectId } =
-      req.body;
+    const { projectId } = req.params;
+    const { featureName, featureDescription, featureStatus } = req.body;
     await Feature.create({
       featureName,
       featureDescription,
